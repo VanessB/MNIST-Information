@@ -21,9 +21,9 @@ plot file_val_path using 1:2:(3.8 * $3) with @plot_errbars t 'Валидация
 
 set xtics 2
 
-set logscale y 2
+set logscale y 10
 set yrange [*:*]
-set format y "2^{%L}"
+set format y "10^{%L}"
 
 set logscale x 2
 set xrange [*:*]

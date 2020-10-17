@@ -54,12 +54,17 @@ set pointsize 2
 set style data lines
 
 set macro
-plot_errbars      = "yerrorbars lw 4"
-plot_small_points = "points pointsize 1 pointtype 2 lw 4"
-plot_points       = "points pointsize 2 pointtype 2 lw 4"
+small_points_common = "points pointsize 1 lw 6"
+points_common       = "points pointsize 2 lw 6"
+big_points_common   = "points pointsize 4 lw 6"
+
+plot_errbars      = "yerrorbars lw 6"
+plot_small_points = small_points_common . "pointtype 2"
+plot_points       = points_common . "pointtype 2"
+plot_big_points   = big_points_common . "pointtype 2"
 
 data_path = '../../data/'                                        # Директория с данными.
-function_path = data_path . 'function_3/4_16/'                   # Директория с данными для выбранной функции.
+function_path = data_path . 'function_3/8_16/'                   # Директория с данными для выбранной функции.
 exp_data_path = function_path . '5.000e-02/'                     # Директория с результатами экспериментов для функции.
 dataset_results_path = function_path . '0.000e+00/60000_10000/'  # Директория с результатами экспериментов с набором данных.
 autoencoders_results_path = exp_data_path . '30000_10000/'       # Директория с результатами экспериментов с внутренним представлением автокодировщиков.

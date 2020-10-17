@@ -30,7 +30,7 @@ file(n) = sprintf(autoencoders_path . "%d_1000/log_pairs.csv", dim[n])
 #b = -1.0
 f(x) = a*x + b
 
-approx_y_min = -4.0
+approx_y_min = -3.0
 approx_y_max = -1.5
 
 array A[total]
@@ -62,7 +62,9 @@ dimg(start, end, i) = gradient((dim[i] - dim[start]) * 1.0 / (dim[end] - dim[sta
 set macro
 lines_titles = "t sprintf(\"d = %d, d_{corr} = %3.3f\", dim[i], a)"
 
-set title  "Корреляционная размерность кодов"
+if (title == 1){
+set title "Корреляционная размерность кодов"
+}
 
 # Оригинальные данные.
 set output '/dev/null'
@@ -120,10 +122,13 @@ if (title == 1){
 set title  "Сводный график корреляционных размерностей"
 }
 
-set xlabel  'd'
-set ylabel  'd_{corr}'
+set mxtics 5
+set mytics 5
+
+set xlabel  'Размерность внутреннего представления'
+set ylabel  'd^*_{corr}'
 
 l(x) = as
 
 set output 'images/fractal_dimension/dimension' . extension
-plot [0 : dim[total] + 1.0][0 : as + 1.0] sample [i=1:total] '+' using (dim[i]):(A[i]) with @plot_points t "d_{corr}", l(x) lw 2 t "Корреляционная размерность набора данных"
+plot [0 : dim[total] + 1.0][0 : as + 1.0] sample [i=1:total] '+' using (dim[i]):(A[i]) with @plot_points t "Внутреннее представление", l(x) lw 4 t sprintf("Исходный набор данных (d_{corr} = %.2f)", as)

@@ -6,6 +6,8 @@ set title 'Подобранная ширина окна'
 set xlabel 'Размерность кода'
 set ylabel 'Ширина окна'
 
+set mxtics 5
+
 data_path = autoencoders_results_path . 'bandwidth.csv'
 
 set output '/dev/null'

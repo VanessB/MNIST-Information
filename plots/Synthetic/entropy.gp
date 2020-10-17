@@ -6,6 +6,8 @@ set title 'Оценка энтропии'
 set xlabel 'Размерность кода'
 set ylabel 'Энтропия, нат'
 
+set mxtics 5
+
 file_path = autoencoders_results_path . 'entropy.csv'
 
 set output '/dev/null'
